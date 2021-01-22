@@ -1,0 +1,109 @@
+{%load static%}
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts</title>
+        <link href="{%static 'css/profile.css'%}" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+          #name{
+            font-size: 2.5rem;
+          }
+          #title{
+            margin-left: 50px;
+          }
+          body{
+            background-color: #0a2a43;
+          }
+          .card {
+      height: auto;
+      width: 100%;
+			margin-bottom: auto;
+			margin-top: 3%;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+    }
+    #image{
+      width:30%;
+      height: 30%;
+    }
+    
+
+
+
+          
+          </style>
+    <body>
+      
+       <!-- <div class="col-md-100 mt-5">
+            <div class="row-mt-5">
+              <div class="col-md-12">
+                <div class="card-columns">-->
+                  <div class="container h-100 ">
+                    <div class="d-flex justify-content-center h-500">
+                      <div class="card">
+                        <div class="d-flex justify-content-center">
+                 
+                <div class="card">
+                    <img class="rounded-circle article-img" src={{object.artist.profile.profile_pic.url}} id="image" />
+                    <a class="ml-2 mr-2" href="{% url 'user-posts' object.artist.username %}" id="name">{{object.artist}}</a>
+                    <small class="text-muted ml-2">{{object.date_posted|date:"F d, Y"}}</small>
+                    <h2 class="card-title ml-2" id="title">{{object.title}}</h2>
+                
+                <div><img src={{object.painting.url}} class="card-img-top" id="paint"/></div>
+                <p class="card-text ml-2">{{object.description}}</p>
+                    <div class="card-body">
+                        {% if object.artist == user %}
+                        <div>
+                            <a class="btn btn-secondary" href="{% url 'post-update' object.id %}">Update</a>
+                            <a class="btn btn-secondary" href="{% url 'post-delete' object.id %}">Delete</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                  </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+       
+        
+            
+            
+                
+                  <!--  <a class="mr-2" href="{% url 'user-posts' object.artist.username %}">{{object.artist}}</a>
+                    <small class="text-muted">{{object.date_posted|date:"F d, Y"}}</small>
+                    {% if object.artist == user %}
+                    <div></div>
+                        <a class="btn btn-secondary" href="{% url 'post-update' object.id %}">UPdate</a>
+                        <a class="btn btn-secondary" href="{% url 'post-delete' object.id %}">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <h2 class="article-title">{{object.title}}</h2>
+                <p class="article-description">{{object.description}}</p>
+                <div><img src={{object.painting.url}} class="profile"/></div>
+            </div>
+        </article>-->
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

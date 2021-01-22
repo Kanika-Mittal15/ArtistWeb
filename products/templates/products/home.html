@@ -1,0 +1,425 @@
+{%load static%}
+<!doctype html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+        <title>Prompts</title>
+        <!--<link href="{%static 'css/main.css'%}" rel="stylesheet" type="text/css">-->
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+    <style>
+      /* body {
+  background: #0a2a43;
+  min-height: 1500px;
+}
+      #text{
+        font-size: 10vh;
+      }
+      .container {
+  border-radius: 5px;
+  
+  padding: 10px;
+}
+.column {
+  float: left;
+  width: 25%;
+  background-color: #0a2a43;
+}
+/* Center website */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  background: #1d1b1b;
+  min-height: 1500px;
+}
+/* #navbar {
+  background-color: #0a2a43;
+  padding: 0.8%;
+  color: antiquewhite;
+  font-size: x-large;
+}
+
+#log {
+  color: antiquewhite;
+  float: right;
+} */
+/* section {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #0a2a43, transparent);
+  z-index: 10000;
+}
+section:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a2a43;
+  z-index: 10000;
+  mix-blend-mode: color;
+}
+section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+#moon {
+  height: 90vh;
+} */
+#text {
+  color: #fff;
+  font-size: 10vw;
+  z-index: 1;
+  background-size: 1800px 1100px;
+  margin-bottom: 0%;
+}
+#quote{
+  color: #fff;
+  font-size: 2vw;
+  margin-top: 0%;
+}
+#banner{
+  background: url('{% static "images/mybg.png" %}') !important;
+  height: 300px;
+}
+/* #road {
+  z-index: 2;
+} */
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  background-color: #1d1b1b;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: #ffffffb6;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+  .main {
+    padding: 20px;
+  }
+  #text {
+    font-size: 20vw;
+  }
+  #quote{
+    font-size: 4vw;
+  }
+}
+@media screen and (max-width: 280px) {
+  .user_card{
+    width:300px;
+  }
+  #form-title {
+  color: #fff;
+  font-size: 100%;
+}
+#banner{
+  height: 150px;
+}
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+  .main {
+    padding: 40px;
+  }
+  #text {
+    font-size: 25vw;
+  }
+  #quote{
+    font-size: 4vw;
+  }
+  #banner{
+    height: 185px;
+  }
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #1d1b1b;
+  padding: 10px;
+}
+
+.user_card {
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #545f5d;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.form_container {
+  margin-top: 20px;
+}
+
+#form-title {
+  color: #fff;
+}
+.login_btn {
+  width: 100%;
+  background: #3e4547 !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 8rem;
+}
+.input-group-text {
+  background: #f7ba5b !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+
+
+    </style>
+    <body>
+       <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand">ArtistWeb</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{%url 'home'%}">Prompts <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{%url 'posts-page'%}">Posts</a>
+            <a class="nav-item nav-link" href="{%url 'workshops'%}">Workshops</a>
+            <a class="nav-item nav-link" href="{%url 'profile'%}">Profile</a>
+            <a class="nav-item nav-link" href="{%url 'logout'%}">Logout</a> 
+          </div>
+        </div>
+      </nav> 
+        <!--<nav id="navbar">
+            <span>Hello, {{request.user}}</span>
+            <span ><a href="{%url 'logout'%}" id="log">LOGOUT</a></span><br>
+            <span ><a href="{%url 'posts-page'%}" id="log">Posts</a></span><br>
+            <span ><a href="{%url 'post-create'%}" id="log">Create Post</a></span>
+        </nav> -->
+        <!-- <section>
+            <img src="{%static 'images/bg.jpg'%}" id="bg">
+            <img src="{%static 'images/moon.png'%}" id="moon">
+            <img src="{%static 'images/mountain.png'%}" id="mountain">
+            <img src="{%static 'images/road.png'%}" id="road">-->
+            <div id="banner"> 
+            <h2 id="text"><center>Prompts</center></h2> 
+             <h5 id="quote"><center>Be willing to be a beginner</center></h5>
+            </div>
+        <!-- </section>
+        <script type="text/javascript">
+            let bg = document.getElementById("bg");
+            let moon = document.getElementById("moon");
+            let mounatin = document.getElementById("mountain");
+            let road = document.getElementById("road");
+            let text = document.getElementById("text");
+            window.addEventListener('scroll',function(){
+                var value=window.scrollY;
+                bg.style.top=value *0.5 + 'px';
+                moon.style.left=-value *0.5 + 'px';
+                mounatin.style.top=-value *0.15 + 'px';
+                road.style.top=value *0.15 + 'px';
+                text.style.top=value*1+'px';
+        })
+        </script>  --> -->
+        <div class="main">
+        <!-- Portfolio Gallery Grid -->
+<div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+        <h3>My Work</h3>
+        <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+      <img src="{%static 'images/road.png'%}" alt="Lights" style="width:100%">
+        <h3>My Work</h3>
+        <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+      <img src="{%static 'images/road.png'%}" alt="Nature" style="width:100%">
+        <h3>My Work</h3>
+        <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+      <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+        <h3>My Work</h3>
+        <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+      </div>
+    </div>
+    <div class="column">
+        <div class="content">
+        <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+          <h3>My Work</h3>
+          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+        <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+          <h3>My Work</h3>
+          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+        <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+          <h3>My Work</h3>
+          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+        <img src="{%static 'images/road.png'%}" alt="Mountains" style="width:100%">
+          <h3>My Work</h3>
+          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+        </div>
+      </div>
+  <!-- END GRID -->
+  </div>
+</div>
+	<div class="container h-100"><center>
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">Prompt you would like to add</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+                        {%csrf_token%}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              {{form.title.label}}
+              {{form.title}}
+              
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+              </div>
+              {{form.description.label}}
+							{{form.description}}
+						</div>
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input class="btn login_btn" type="submit" value="Send">
+				   		</div>
+					</form>
+				</div>
+		
+				
+			</div>
+		</div></center>
+	</div>
+	<script>
+						/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+		//We start indexing at one because CSRF_token is considered and input field 
+		 */
+
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Title..';
+		form_fields[2].placeholder='write something';
+		
+
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+

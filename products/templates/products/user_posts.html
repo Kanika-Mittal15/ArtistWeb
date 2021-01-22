@@ -1,0 +1,87 @@
+{%load static%}
+<!doctype html>
+<html>
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title >{{view.kwargs.username}}</title>
+        <link href="{%static 'css/profile.css'%}" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+            width: 100%;
+            /* background: url('{% static "images/colors.png" %}') ;  */
+			background: url('{% static "images/Untitled.png" %}') !important;
+		}
+        .image{
+            height: 30%;
+            width: 30%;
+            border-radius: 50%;
+            margin-left: 5%;
+            margin-top: 5%;
+        }
+        #name{
+                font-size: 160%;
+                color: black;
+            }
+        @media screen and (max-width: 800px) and (min-width: 700px){
+            #name{
+                font-size: 150%;
+                color: black;
+            }
+            
+        }
+    </style>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" >
+            <a class="navbar-brand">ArtistWeb</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{%url 'workshops'%}">Workshops <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{%url 'posts-page'%}">Posts</a>
+                <a class="nav-item nav-link" href="{%url 'home'%}">Prompts</a>
+                <a class="nav-item nav-link" href="{%url 'profile'%}">Profile</a>
+                <a class="nav-item nav-link" href="{%url 'logout'%}">Logout</a> 
+              </div>
+            </div>
+          </nav>
+        <center><h1 class="mb-3">Posts by {{view.kwargs.username}}</h1></center>
+        <div class="col-md-100">
+            <div class="row-mt-3">
+              <div class="col-md-12">
+                <div class="card-columns">
+                    {% for post in posts %}
+                    <div class="card">
+                        <img src={{post.artist.profile.profile_pic.url}} class="image" />
+                        <div class="card-body">
+                            <a class="mr-2" id="name" href="{% url 'user-posts' post.artist.username %}">{{post.artist}}</a>
+                            <small class="text-muted">{{post.date_posted|date:"F d, Y"}}</small>
+                            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h2>
+                            <p class="article-description">{{post.description}}</p>
+                            <div><img src="{{ post.painting.url }}" class="img-responsive" style="width: 100%; margin-right: 10px;" /> </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+            <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

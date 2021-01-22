@@ -1,0 +1,155 @@
+{%load static%}
+
+<!doctype html>
+<html>
+    <head>
+      <!--<style>
+        
+      div.gallery img {
+        width: 25%;
+        height:25% ;
+      }
+      * {
+              box-sizing: border-box;
+            }
+            .responsive {
+              padding: 0 0px;
+              float: left;
+              width: auto;
+              
+            }
+    </style>-->
+        <!--<style>
+         
+            div.gallery {
+              
+              padding-top: 0%;
+              width: auto;
+              vertical-align: top;
+              
+            }
+            
+            #image:hover {
+              border: 1px solid #777;
+            }
+            
+            div.gallery img {
+        width: 100%;
+        padding-top: 0%;
+       
+       
+        
+        
+      }
+            
+            div.desc {
+              padding: 15px;
+              text-align: center;
+            }
+            div.title{
+              padding: 15px;
+              text-align: center;
+            }
+            
+            * {
+              box-sizing: border-box;
+            }
+          
+         
+            .responsive {
+              padding: 0 6px;
+              float: left;
+              width: 24.99999%;
+            }
+            
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+            </style>-->
+      <style>
+        
+        @media only screen and (max-width: 500px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+      </style>
+         
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts</title>
+        <link href="{%static 'css/profile.css'%}" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.css">
+    </head>
+    <body>
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand">ArtistWeb</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{%url 'posts-page'%}">Posts <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{%url 'post-create'%}">Add Post</a>
+            <a class="nav-item nav-link" href="{%url 'home'%}">Prompts</a>
+            <a class="nav-item nav-link" href="{%url 'workshops'%}">Workshops</a>
+            <a class="nav-item nav-link" href="{%url 'profile'%}">Profile</a>
+            <a class="nav-item nav-link" href="{%url 'logout'%}">Logout</a> 
+          </div>
+        </div>
+      </nav>
+            <!--<article class="media content-section">-->
+                <!--  <div class="responsive">
+                    <div class="gallery">-->
+                        <!--<img src={{post.artist.profile.profile_pic.url}} class="profile" />-->
+                    <div class="col-md-100">
+                      <div class="row-mt-2">
+                        <div class="col-12">
+                          <div class="card-columns">
+                            {% for post in posts %}
+                            <div class="card">
+                              <a  href="{% url 'user-posts' post.artist.username %}"><img src="{{ post.painting.url }}" class="card-img-top"  /> </a>
+                              <div class="card-body">
+                                <h5 class="card-title"> {{post.title}}</h5>
+                                <p class="card-text">{{post.description}}</p>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <!--<div class="media-body">
+                    <div class="article-metadata">              
+                    </div>            
+                </div>-->
+        
+            <!--</article>-->
+            <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--cropper-->
+    <script>"https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.min.js"</script>
+    </body>
+</html>

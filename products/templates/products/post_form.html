@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Add Post</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.min.js"></script>
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.css">
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: url('{% static "images/mybg.png" %}') !important;
+			
+		}
+		.user_card {
+			width: 450px;
+			height: 670px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #000000c7;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+		.des,.paint,.title{
+			color: white;
+		}
+		#post{
+			color: rgb(0, 0, 0);
+			background-color: rgb(119, 119, 118);
+			margin-left: 30%;
+			padding-left: 10%;
+			padding-right: 10%;
+			padding-bottom: 0%;
+			padding-top: 0%;
+		}
+			
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+			margin-top: 5%;
+		}
+		.login_btn {
+			width: 100%;
+			background: #33ccff !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		
+	</style>
+
+</head>
+<body>
+	
+	<div class="container h-100" >
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h1 id="form-title">ADD POST</h1>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="" enctype="multipart/form-data" id="formUpload">
+                        {%csrf_token%}
+						<div class="input-group mb-3 ml-2">
+							<div class="input-group-append">
+								<span class="input-group-text mr-3"><i class="fas fa-user"></i></span>
+							</div>
+							<h1 class="title mr-3">{{form.title.label}}:</h1>{{form.title}}
+							<h1 class="des">{{form.description.label}}:</h1><span class="text ml-5">{{form.description}}</span>
+							<h1 class="paint ml-2">{{form.painting.label}}:</h1><h4 class="ml-1">{{form.painting}}</h4>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit" id="post"><h1>Post</h1></button>
+                        </div>
+                    </form>	
+			    </div>
+		    </div>
+		</div>
+	
+		 <!--MODAL TO CROP THE IMAGE -->
+		<div class="modal fade" id="modalCrop">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				  <h4 class="modal-title">Crop the photo</h4>
+				</div>
+				<div class="modal-body">
+				  <img src="" id="image" style="max-width: 100%;">
+				</div>
+				<div class="modal-footer">
+				  <div class="btn-group pull-left" role="group">
+					<button type="button" class="btn btn-default js-zoom-in">
+					  <span class="glyphicon glyphicon-zoom-in"></span>
+					</button>
+					<button type="button" class="btn btn-default js-zoom-out">
+					  <span class="glyphicon glyphicon-zoom-out"></span>
+					</button>
+				  </div>
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+				  <button type="button" class="btn btn-primary js-crop-and-upload">Crop and upload</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
+		  <!--CONTAINER TO DISPLAY THE CROPPED IMAGES -->
+		  <div class="row" style="margin-top: 20px">
+			{% for post in posts %}
+			  <div class="col-sm-4 col-md-3">
+				<img src="{{ post.painting.url }}" class="thumbnail">
+			  </div>
+			{% endfor %}
+	</div>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+	 <!--jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script>
+		$(function () {
+
+/* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
+$("#id_painting").change(function () {
+  if (this.files && this.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function (e) {
+	  $("#image").attr("src", e.target.result);
+	  $("#modalCrop").modal("show");
+	}
+	reader.readAsDataURL(this.files[0]);
+  }
+});
+/* SCRIPTS TO HANDLE THE CROPPER BOX */
+var $image = $("#painting");
+var cropBoxData;
+var canvasData;
+$("#modalCrop").on("shown.bs.modal", function () {
+  $image.cropper({
+	viewMode: 3,
+	aspectRatio: 1/1,
+	minCropBoxWidth: 200,
+	minCropBoxHeight: 200,
+	ready: function () {
+	  $image.cropper("setCanvasData", canvasData);
+	  $image.cropper("setCropBoxData", cropBoxData);
+	}
+  });
+}).on("hidden.bs.modal", function () {
+  cropBoxData = $image.cropper("getCropBoxData");
+  canvasData = $image.cropper("getCanvasData");
+  $image.cropper("destroy");
+});
+
+$(".js-zoom-in").click(function () {
+  $image.cropper("zoom", 0.1);
+});
+
+$(".js-zoom-out").click(function () {
+  $image.cropper("zoom", -0.1);
+});
+
+/* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
+$(".js-crop-and-upload").click(function () {
+  var cropData = $image.cropper("getData");
+  $("#id_x").val(cropData["x"]);
+  $("#id_y").val(cropData["y"]);
+  $("#id_height").val(cropData["height"]);
+  $("#id_width").val(cropData["width"]);
+  $("#formUpload").submit();
+});
+
+});
+	</script>
+</body>
+</html>
+ 
+

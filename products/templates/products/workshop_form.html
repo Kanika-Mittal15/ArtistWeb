@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Add Workshop</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.min.js"></script>
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.5.0/cropper.css">
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+            width: 100%;
+            /* background: url('{% static "images/colors.png" %}') ;  */
+			background: url('{% static "images/Untitled.png" %}') !important;
+		}
+		
+		.user_card {
+			opacity: 2;
+            width: 350px;
+			height: 650px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background:rgba(184, 163, 178, 0.973);
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 20px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 0px;
+		}
+
+		#form-title{
+			color: #fff;
+			margin-bottom: 10%;
+		}
+		#post{
+			margin-top: 10%;
+			color:white;
+			font-size: 155%;
+		}
+		
+		
+	</style>
+</head> 
+<body>
+	
+		<div class="container h-100" >
+			<div class="d-flex justify-content-center h-100">
+				<div class="user_card">
+					<div class="d-flex justify-content-center">
+						<h3 id="form-title">ADD WORKSHOP</h3>
+					</div>
+					<div class="d-flex justify-content-center form_container">
+						<form method="POST" action="" enctype="multipart/form-data" id="formUpload">
+							{%csrf_token%}
+							<div class="input-group mb-3 ml-2">
+								<div class="input-group-append">
+									<span class="input-group-text mr-2"><i class="fas fa-user"></i></span>
+								</div>
+								<h2 class="title mr-1 ">{{form.name.label}}</h2>{{form.name}}
+							<h2 class="des mt-3">{{form.Main_Img.label}}</h2><span class="text ml-5">{{form.Main_Img}}</span>
+								<h2>{{form.Description.label}}</h2>{{form.Description}}
+							</div>
+							<div class="form-group">
+								<button class="btn btn-outline-info ml-5" type="submit" id="post">Post</button>
+							</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body> 
+</html> 
