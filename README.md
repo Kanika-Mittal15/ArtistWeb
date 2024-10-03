@@ -16,7 +16,7 @@ Features
 
 -User Portfolio Management: Allows users to create and maintain their own collection of artwork, acting as a personalized digital portfolio.
 
--Artwork Browsing: Users can browse art pieces uploaded by other users, sorted by categories, popularity, and more.
+-Artwork Browsing: Users can browse art pieces uploaded by other users.
 
 -Workshops: Artists can post workshops, and users can discover new workshops to join for skill development.
 
